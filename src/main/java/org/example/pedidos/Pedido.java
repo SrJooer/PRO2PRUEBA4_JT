@@ -22,11 +22,19 @@ public abstract class Pedido {
     public abstract double calcularCostoEnvio();
     public abstract String getTipo();
 
+    public void cambiarEstado(EstadoPedido nuevoEstado) throws TransicionEstadoInvalidaException {
+        if (estado.transicionarA(nuevoEstado)) {
+            estado = nuevoEstado;
+        } else {
+            throw new TransicionEstadoInvalidaException(estado, nuevoEstado);
+        }
+    }
+
     public String toString() {
         return "ID: " + id
                 + ", Tipo: " + getTipo()
-                + ", Cliente: " + monto
-                + ", Monto: " + estado
+                + ", Cliente: " + cliente
+                + ", Monto: " + monto
                 + ", Estado: " + estado
                 + ", Costo de envío: " + calcularCostoEnvio();
     }

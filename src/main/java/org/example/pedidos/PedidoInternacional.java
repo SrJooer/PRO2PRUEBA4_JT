@@ -19,7 +19,7 @@ public class PedidoInternacional extends Pedido {
 
     @Override
     public String getTipo() {
-        return "PEDIDO INTERNACIONAL";
+        return "PEDIDO INTERNACIONAL PAIS: " + destino;
     }
 
     @Override

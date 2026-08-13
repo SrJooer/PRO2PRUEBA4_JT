@@ -25,23 +25,27 @@ public class GestorPedidos {
 
     public void cambiarEstado(int id, EstadoPedido nuevoEstado) throws PedidoNoEncontradoException, TransicionEstadoInvalidaException {
         Pedido p = buscarPedidoPorId(id);
-        EstadoPedido actual = p.getEstado();
-        if (actual.transicionarA(nuevoEstado)) {
-
-        } else {
-            throw new TransicionEstadoInvalidaException(actual, nuevoEstado);
-        }
+        p.cambiarEstado(nuevoEstado);
     }
 
     public Pedido[] listarPorEstado(EstadoPedido estado) {
-        Pedido[] pedidosFiltrados = new Pedido[cantidad];
         int contador = 0;
         for (int i = 0; i < cantidad; i++) {
             if (pedidos[i].getEstado() == estado) {
-                pedidosFiltrados[contador] = pedidos[i];
                 contador++;
             }
         }
+
+        Pedido[] pedidosFiltrados = new Pedido[contador];
+
+        int indice = 0;
+        for (int i = 0; i < cantidad; i++) {
+            if (pedidos[i].getEstado() == estado) {
+                pedidosFiltrados[indice] = pedidos[i];
+                indice++;
+            }
+        }
+
         return pedidosFiltrados;
     }
 }

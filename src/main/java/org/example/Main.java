@@ -2,7 +2,6 @@ package org.example;
 
 import org.example.pedidos.*;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +9,7 @@ public class Main {
     private static GestorPedidos gestorPedidos = new GestorPedidos();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main() {
+    public static void main(String[] args) {
         int n = 0;
         do {
             n = mostrarMenu();
